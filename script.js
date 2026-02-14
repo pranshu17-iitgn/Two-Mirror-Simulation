@@ -63,23 +63,34 @@ function drawMirror(angle) {
   ctx.stroke();
 }
 
-function drawObject(r) {
+function drawObject(r, theta) {
+  const angle = theta / 2;
+
   ctx.fillStyle = "red";
   ctx.beginPath();
-  ctx.arc(CENTER + r * SCALE, CENTER, 6, 0, 2 * Math.PI);
+  ctx.arc(
+    CENTER + r * SCALE * Math.cos(angle),
+    CENTER + r * SCALE * Math.sin(angle),
+    6,
+    0,
+    2 * Math.PI
+  );
   ctx.fill();
 }
+
 
 function drawImages(r, theta) {
   ctx.fillStyle = "blue";
   const step = 2 * theta;
+  const baseAngle = theta / 2;
 
   for (let n = -20; n <= 20; n++) {
-    const pos = rotate(r, 0, n * step);
+    const angle = baseAngle + n * step;
+
     ctx.beginPath();
     ctx.arc(
-      CENTER + pos.x * SCALE,
-      CENTER + pos.y * SCALE,
+      CENTER + r * SCALE * Math.cos(angle),
+      CENTER + r * SCALE * Math.sin(angle),
       4,
       0,
       2 * Math.PI
@@ -87,6 +98,7 @@ function drawImages(r, theta) {
     ctx.fill();
   }
 }
+
 
 function update() {
   const thetaDeg = Number(angleSlider.value);
@@ -100,7 +112,7 @@ function update() {
 
   drawPolarGrid();
   drawMirror(theta);
-  drawObject(r);
+  drawObject(r, theta);
   drawImages(r, theta);
 }
 
