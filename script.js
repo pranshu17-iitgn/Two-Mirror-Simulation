@@ -64,13 +64,13 @@ function drawMirror(angle) {
 }
 
 function drawObject(r, theta) {
-  const angle = theta / 2;
+  const phi = theta / 2;   // bisector angle
 
   ctx.fillStyle = "red";
   ctx.beginPath();
   ctx.arc(
-    CENTER + r * SCALE * Math.cos(angle),
-    CENTER + r * SCALE * Math.sin(angle),
+    CENTER + r * SCALE * Math.cos(phi),
+    CENTER + r * SCALE * Math.sin(phi),
     6,
     0,
     2 * Math.PI
@@ -79,18 +79,20 @@ function drawObject(r, theta) {
 }
 
 
+
 function drawImages(r, theta) {
   ctx.fillStyle = "blue";
-  const step = 2 * theta;
-  const baseAngle = theta / 2;
+
+  const phi0 = theta / 2;   // object angle
+  const step = 2 * theta;  // angular separation
 
   for (let n = -20; n <= 20; n++) {
-    const angle = baseAngle + n * step;
+    const phi = phi0 + n * step;
 
     ctx.beginPath();
     ctx.arc(
-      CENTER + r * SCALE * Math.cos(angle),
-      CENTER + r * SCALE * Math.sin(angle),
+      CENTER + r * SCALE * Math.cos(phi),
+      CENTER + r * SCALE * Math.sin(phi),
       4,
       0,
       2 * Math.PI
@@ -120,3 +122,4 @@ angleSlider.oninput = update;
 radiusSlider.oninput = update;
 
 update();
+
