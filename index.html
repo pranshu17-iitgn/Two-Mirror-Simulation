@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Two Plane Mirrors – Polar Simulation</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<h2>Two Plane Mirrors – Object Off Hinge (Polar View)</h2>
+
+<canvas id="canvas" width="600" height="600"></canvas>
+
+<div class="controls">
+  <label>
+    Mirror Angle θ (deg):
+    <input type="range" id="angle" min="10" max="180" value="60">
+    <span id="angleVal">60</span>
+  </label>
+
+  <label>
+    Object Distance r:
+    <input type="range" id="radius" min="0.5" max="3" step="0.1" value="1.5">
+    <span id="radiusVal">1.5</span>
+  </label>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
